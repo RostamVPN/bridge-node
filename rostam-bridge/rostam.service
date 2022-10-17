@@ -1,0 +1,17 @@
+[Unit]
+Description=RostamVPN - UDP proxy
+Documentation=https://github.com/yyyar/gobetween/wiki
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+PIDFile=/run/rostamvpn.pid
+#ExecStartPre=prestart some command
+ExecStart=/rostam-vpn/gobetween -c rostam-udp-proxy.toml --pidfile /run/rostamvpn.pid
+ExecStop=/bin/kill -s TERM $MAINPID
+PrivateTmp=true
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
+

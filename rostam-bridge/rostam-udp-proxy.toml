@@ -1,0 +1,77 @@
+# ********************************************* #
+#  ---------- women, life, freedom -----------  #
+# ********************************************* #
+
+[api]
+enabled = true  # true | false
+bind = ":1334"  # bind host:port
+
+[api.basic_auth]   # (optional) Enable HTTP Basic Auth
+login = ""    # HTTP Auth Login
+password = ""  # HTTP Auth Password
+
+[api.tls]                        # (optional) Enable HTTPS
+cert_path = "/rostam-vpn/cert.pem"  # Path to certificate
+key_path = "/rostam-vpn/key.pem"    # Path to key
+  
+[logging]
+level = "info"    # "debug" | "info" | "warn" | "error"
+output = "stdout" # "stdout" | "stderr" | "/path/to/gobetween.log"
+format = "text"   # (optional) "text" | "json"
+
+[servers]
+
+[servers.rostam-443]
+bind = ":443"
+protocol = "udp"
+max_connections = 0              # Maximum simultaneous connections to the server
+client_idle_timeout = "0"        # Client inactivity duration before forced connection drop
+backend_idle_timeout = "0"       # Backend inactivity duration before forced connection drop
+backend_connection_timeout = "0" # Backend connection timeout (ignored in udp)
+
+[servers.rostam-443.udp]
+max_responses = 0
+max_requests = 0
+client_idle_timeout = 0
+backend_idle_timeout = 0
+
+[servers.rostam-443.discovery]
+kind = "static"
+static_list = [ "dragon-front.redtunnel.net:443"]
+
+
+[servers.rostam-993]
+bind = ":993"
+protocol = "udp"
+max_connections = 0              # Maximum simultaneous connections to the server
+client_idle_timeout = "0"        # Client inactivity duration before forced connection drop
+backend_idle_timeout = "0"       # Backend inactivity duration before forced connection drop
+backend_connection_timeout = "0" # Backend connection timeout (ignored in udp)
+
+[servers.rostam-993.udp]
+max_responses = 0
+max_requests = 0
+client_idle_timeout = 0
+backend_idle_timeout = 0
+
+[servers.rostam-993.discovery]
+kind = "static"
+static_list = [ "dragon-front.redtunnel.net:443"]
+
+[servers.rostam-33434]
+bind = ":33434"
+protocol = "udp"
+max_connections = 0              # Maximum simultaneous connections to the server
+client_idle_timeout = "0"        # Client inactivity duration before forced connection drop
+backend_idle_timeout = "0"       # Backend inactivity duration before forced connection drop
+backend_connection_timeout = "0" # Backend connection timeout (ignored in udp)
+
+[servers.rostam-33434.udp]
+max_responses = 0
+max_requests = 0
+client_idle_timeout = 0
+backend_idle_timeout = 0
+
+[servers.rostam-33434.discovery]
+kind = "static"
+static_list = [ "dragon-front.redtunnel.net:443"]
